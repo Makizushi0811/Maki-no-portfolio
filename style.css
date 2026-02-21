@@ -1,0 +1,354 @@
+
+        /* ページ全体 ------------------------ */
+        body {
+            margin: 0;
+            font-family: "Yu Gothic", sans-serif;
+            background-color: #F2F2F2; /* ほんのりグレー */
+        }
+
+        /* ヘッダー ------------------------ */
+header {
+  background-image: url("images/22444819.jpg");
+  background-size: cover;
+  background-position: center;
+ 
+  color: #043F8C;         /* 紺 */
+  text-align: center;
+  padding: 30px 20px;
+}
+
+        header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+
+        header p {
+            margin: 5px 0 0;
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        /* ナビゲーション ------------------------ */
+        nav {
+            background-color: #F2CEDF; /* ピンク */
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex; /* 横並び！ */
+            justify-content: space-around;
+        }
+
+        nav ul li {
+            padding: 14px;
+            color: #043F8C;
+            font-size: 16px;
+        }
+
+        nav ul li:hover {
+            background-color: #F2DBED; /* ホバーで少し明るく */
+            cursor: pointer;
+        }
+
+/* C: 背景薄ピンク */
+nav a[aria-current="page"] {
+  position: relative;
+  background-color: #FBE7F1; /* ほんの少し濃いピンク */
+  font-weight: 700;
+  border-radius: 8px;
+}
+
+/* E: 先頭にマーカー */
+nav a[aria-current="page"]::before {
+  content: "▶";
+  margin-right: 0em;
+  color: #043F8C;        /* 背景が濃いときは #fff に */
+  font-size: .95em;
+  vertical-align: baseline;
+}
+
+        /* メイン ------------------------ */
+        main {
+            background-color: white;
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 30px;
+            border-radius: 10px; /* 角を丸くしてカード風 */
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        main h2 {
+            color: #043F8C;
+            margin-top: 0;
+            font-size: 26px;
+        }
+
+        main p {
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        /* フッター ------------------------ */
+        footer {
+            background-color: #F2CEDF;
+            color: #043F8C;
+            text-align: center;
+            padding: 10px;
+        }
+
+
+.profile-photo {
+  width: 180px;              /* 写真の大きさ（お好みで変更可） */
+  height: 180px;             /* 正円にするために同じ値にする */
+  object-fit: cover;         /* 顔がつぶれず、ちょうどよくトリミング */
+  
+  border-radius: 20px;        /* ← 丸くする */
+  
+  border: 6px solid #ffffff; /* ← 白い枠線（6px） */
+  
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);  /* ← 柔らかい影 */
+  
+  display: block;
+  margin: 0 auto 20px;       /* 中央寄せ & 下に余白 */
+}
+
+
+
+/* ---- Works（縦1カラム：上から順に読む） ---- */
+
+/* 作品一覧のコンテナ：中央寄せ・最大幅を広めに */
+.works-grid {
+  /* Columns は使わない！読み順が崩れるため */
+  display: flex;
+  flex-direction: column;
+  gap: 24px;            /* カード間の余白 */
+  margin-top: 20px;
+
+  /* ページ中央に大きめ幅で配置（お好みで 880〜1040px 程度） */
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 12px;      /* 端の余白（スマホで効く） */
+}
+
+/* 各カード */
+.work-card {
+  /* Columns 時代の名残を排除：inline-block や margin-bottom は不要 */
+  background: #ffffff;
+  border: 1px solid #F2CEDF;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 6px 16px rgba(0,0,0,.12);
+}
+
+/* 画像：横幅いっぱい、高さは自動で縦横比維持 ⇒ “大きめ” に見せる */
+.work-card img {
+  width: 100%;
+  height: auto;           /* ← アスペクト比を維持 */
+  border-radius: 10px;
+  display: block;
+  margin-bottom: 12px;
+
+  /* ちょいリッチなホバー拡大 */
+  transition: transform .3s ease;
+}
+.work-card:hover img {
+  transform: scale(1.03);
+}
+
+/* タイトル・本文の調整（任意で） */
+.work-card h3 {
+  margin: 0 0 8px;
+  color: #043F8C;
+  font-size: 20px;        /* 作品タイトルを少し大きめに */
+}
+.work-card p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.8;
+  color: #333;
+  white-space: pre-line;
+}
+
+/* 使用タグ（以前の設定を継承） */
+.work-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  margin: 10px 0 0;
+}
+.work-tags .tag {
+  background: #F2DBED; color: #043F8C; font-size: 12px;
+  padding: 4px 8px; border-radius: 999px; border: 1px solid #E7BFD6;
+}
+
+/* スマホ：内側余白を少し広めにして読みやすく */
+@media (max-width: 560px) {
+  .works-grid { padding: 0 16px; }
+  .work-card { padding: 14px; }
+  .work-card h3 { font-size: 18px; }
+  .work-card p { font-size: 14px; line-height: 1.75; }
+}
+
+
+/* 3枚目のような「小さめ画像」は、元サイズのまま中央に表示 */
+.work-card.work-card--natural img {
+  width: auto;          /* カード幅に引き伸ばさない */
+  max-width: 100%;      /* スマホではカード幅を超えない */
+  height: auto;         /* 縦横比を維持 */
+  display: block;
+  margin: 0 auto 12px;  /* 中央寄せ＋下余白 */
+  image-rendering: auto;/* 高品質リサンプル（念のため） */
+}
+
+/* 小さめ画像カードでもホバー拡大は維持（お好みで） */
+.work-card.work-card--natural:hover img {
+  transform: scale(1.03);
+}
+
+/* スマホ時（任意だが安心設定） */
+@media (max-width: 560px) {
+  .work-card.work-card--natural img {
+    /* 横幅が狭い端末では自然に縮小される（max-width:100%が効く） */
+  }
+}
+
+
+
+
+/* ============== Skills ページ ============== */
+
+/* セクション見出しの下に軽い余白 */
+.skills-section { margin-top: 24px; }
+
+/* --- A. カード型（デザイン） --- */
+.skills-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 12px;
+}
+.skill-card {
+  background: #fff;
+  border: 1px solid #F2CEDF;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+.skill-card h4 {
+  margin: 0 0 6px;
+  color: #043F8C;
+  font-size: 18px;
+}
+.skill-card p {
+  margin: 0 0 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+/* メーター（進捗バー） */
+.meter {
+  background: #F8EAF2;            /* 薄ピンク */
+  border: 1px solid #F2CEDF;
+  border-radius: 999px;
+  height: 10px;
+  overflow: hidden;
+  margin: 6px 0 8px;
+}
+.meter.small { height: 8px; }
+.meter > span {
+  display: block;
+  height: 100%;
+  background: #043F8C;           /* 紺のバー */
+  border-radius: 999px 0 0 999px;
+  transition: width .4s ease;
+}
+
+/* タグ（使用スキルなど） */
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.tag {
+  background: #F2DBED;
+  color: #043F8C;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid #E7BFD6;
+}
+
+/* --- B. 箇条書き（コーディング） --- */
+.skills-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;   /* 2カラム */
+  gap: 12px 20px;
+  margin-top: 12px;
+}
+.skills-list li { background: #fff; border: 1px solid #F2CEDF; border-radius: 12px; padding: 14px; }
+.skills-list strong { color: #043F8C; }
+
+/* --- C. 強み（丸ポチ） --- */
+.bullets { margin: 10px 0 0 1.2em; }
+.bullets li { margin-bottom: 6px; }
+
+/* スマホ微調整 */
+@media (max-width: 640px) {
+  .skills-cards { grid-template-columns: 1fr; }
+  .skills-list { grid-template-columns: 1fr; }
+}
+
+
+
+/* フォームの基本 */
+.form-row { margin-bottom: 14px; }
+label { display: inline-block; margin-bottom: 6px; font-weight: 600; color: #043F8C; }
+input[type="text"], input[type="email"], textarea {
+  width: 100%; padding: 10px 12px;
+  border: 1px solid #e6b0ba; border-radius: 8px; font: inherit;
+  background: #fff;
+}
+textarea { min-height: 140px; }
+button.btn {
+  background: #043F8C; color: #fff; border: none;
+  padding: 10px 18px; border-radius: 8px; cursor: pointer;
+}
+button.btn:hover { background: #072e64; }
+
+
+
+
+/* 日本語の禁則処理・行分割品質向上（全体適用） */
+html[lang="ja"] body {
+  /* 日本語行分割規則（JIS寄りの厳しめ）：行頭禁則・行末禁則を強める */
+  line-break: strict;
+
+  /* 日本語の単語境界を壊さない（記号の所で不用意に折り返さない） */
+  word-break: keep-all;
+
+  /* 長い語（英単語・URLなど）だけは必要に応じて折り返す */
+  overflow-wrap: anywhere; /* or break-word; どちらかでOK */
+
+  /* 句読点のぶら下げ（行末に’。’，が来た際、すこし外に出して均等化） */
+  hanging-punctuation: allow-end;
+
+  /* 字間の自動調整（ブラウザ対応が新しめ：対応外でも無害） */
+  text-spacing-trim: space-all; /* 先頭・末尾の空白を整える（対応ブラウザで有効） */
+}
+
+/* 段落や本文（任意） */
+html[lang="ja"] main p {
+  text-wrap: pretty;    /* きれいな改行（対応ブラウザで有効） */
+  line-height: 1.8;     /* 可読性のため行間を少し広めに */
+}
+
+/* 見出しは行が長いときにバランスよく折り返す（対応ブラウザで有効） */
+html[lang="ja"] h1,
+html[lang="ja"] h2,
+html[lang="ja"] h3 {
+  text-wrap: balance;   /* 見出しのバランス改行 */
+}
+
+
